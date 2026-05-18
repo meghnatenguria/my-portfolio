@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Meghna Tenguria — Digital Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1612;
+    --cream: #f5f0e8;
+    --warm: #e8dfd0;
+    --gold: #c9a84c;
+    --rust: #b85c38;
+    --sage: #6b7c6e;
+    --muted: #8a7f72;
+    --card-bg: #fdfaf5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem; height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -10%; right: -5%;
+    width: 55%; height: 120%;
+    background: radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(184,92,56,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--rust); }
+  .hero-desc {
+    font-size: 1rem; color: var(--muted); line-height: 1.75;
+    max-width: 480px; margin-bottom: 2.5rem;
+  }
+  .hero-tags { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .tag {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.4rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 100px;
+  }
+  .tag-seo { color: var(--rust); border-color: rgba(184,92,56,0.4); }
+  .tag-smm { color: var(--sage); border-color: rgba(107,124,110,0.4); }
+  .tag-gbp { color: var(--gold); border-color: rgba(201,168,76,0.4); }
+  .tag-ga4 { color: var(--muted); border-color: rgba(138,127,114,0.4); }
+
+  .cta-row { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    display: inline-block; padding: 0.85rem 2rem;
+    background: var(--ink); color: var(--cream);
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block; padding: 0.85rem 2rem;
+    border: 1px solid var(--ink); color: var(--ink);
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  /* Hero Right — Stats Card */
+  .hero-right { display: flex; justify-content: center; align-items: center; }
+  .stats-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 60px rgba(26,22,18,0.08);
+    position: relative;
+  }
+  .stats-card::before {
+    content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+  }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .stat { text-align: center; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--rust);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem; }
+  .stat-divider { grid-column: 1/-1; height: 1px; background: rgba(201,168,76,0.2); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300;
+    line-height: 1.2; margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--rust); }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { font-size: 1.05rem; line-height: 1.85; color: #3d3530; margin-bottom: 1.25rem; }
+  .about-highlight {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(184,92,56,0.06));
+    border-left: 3px solid var(--gold);
+    padding: 1.5rem 1.75rem; margin-top: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-style: italic; line-height: 1.6; color: var(--ink);
+  }
+  .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .tool-item {
+    background: var(--card-bg);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 0.85rem 1.1rem;
+    font-size: 0.82rem; font-weight: 500;
+    display: flex; align-items: center; gap: 0.6rem;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .tool-item:hover { border-color: var(--gold); transform: translateX(3px); }
+  .tool-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* ── SKILLS ── */
+  .skills-bg { background: var(--ink); color: var(--cream); }
+  .skills-bg .section-title { color: var(--cream); }
+  .skills-bg .section-label { color: var(--gold); }
+  .skills-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .pillar {
+    padding: 3rem 2.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .pillar:hover { background: rgba(201,168,76,0.05); }
+  .pillar-icon { font-size: 2rem; margin-bottom: 1.25rem; }
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .pillar-list { list-style: none; }
+  .pillar-list li {
+    font-size: 0.85rem; color: rgba(245,240,232,0.65);
+    padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .pillar-list li::before { content: '→'; color: var(--rust); font-size: 0.7rem; }
+
+  /* ── WORK ── */
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 0; overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: grid; grid-template-columns: 1fr 1.5fr;
+  }
+  .project-card:hover { box-shadow: 0 16px 50px rgba(26,22,18,0.1); transform: translateY(-3px); }
+  .project-visual {
+    background: linear-gradient(135deg, #1a1612 0%, #2d2420 100%);
+    padding: 3rem 2rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 320px;
+  }
+  .project-badge {
+    display: inline-block; padding: 0.35rem 0.85rem;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    align-self: flex-start;
+  }
+  .project-client-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300; color: var(--cream);
+    line-height: 1.1;
+  }
+  .project-client-sub { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.25rem; }
+  .project-content { padding: 2.5rem 3rem; }
+  .project-role {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 1rem;
+  }
+  .project-desc { font-size: 0.92rem; line-height: 1.75; color: #4a3f35; margin-bottom: 2rem; }
+  .project-results { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .result-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.85rem; line-height: 1.5;
+  }
+  .result-check {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(184,92,56,0.12); border: 1px solid rgba(184,92,56,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: var(--rust); flex-shrink: 0; margin-top: 2px;
+  }
+  .project-link {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--gold); padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .project-link:hover { color: var(--rust); }
+
+  /* ── KEYWORDS TABLE ── */
+  .kw-section { background: #faf7f2; }
+  .kw-table { width: 100%; border-collapse: collapse; }
+  .kw-table thead tr { border-bottom: 2px solid var(--gold); }
+  .kw-table th {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted);
+    padding: 1rem 1.25rem; text-align: left;
+  }
+  .kw-table tbody tr { border-bottom: 1px solid rgba(201,168,76,0.1); transition: background 0.15s; }
+  .kw-table tbody tr:hover { background: rgba(201,168,76,0.04); }
+  .kw-table td { padding: 1rem 1.25rem; font-size: 0.88rem; }
+  .rank-badge {
+    display: inline-block; padding: 0.2rem 0.65rem;
+    border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+  }
+  .rank-top { background: rgba(107,124,110,0.12); color: var(--sage); }
+  .rank-good { background: rgba(201,168,76,0.12); color: #8a6d1a; }
+  .rank-mid { background: rgba(138,127,114,0.12); color: var(--muted); }
+  .kw-intent { font-size: 0.72rem; color: var(--muted); }
+
+  /* ── CONTENT SAMPLE ── */
+  .content-samples { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .sample-card {
+    background: var(--card-bg); border: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem;
+  }
+  .sample-type {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem;
+  }
+  .sample-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; margin-bottom: 1rem; line-height: 1.3;
+  }
+  .sample-body { font-size: 0.88rem; line-height: 1.8; color: #4a3f35; }
+  .sample-note {
+    margin-top: 1.5rem; padding: 1rem; background: rgba(201,168,76,0.06);
+    border-left: 2px solid var(--gold);
+    font-size: 0.78rem; color: var(--muted); font-style: italic;
+  }
+
+  /* ── RESULTS ── */
+  .results-bg { background: linear-gradient(135deg, var(--ink) 0%, #2d2420 100%); color: var(--cream); }
+  .results-bg .section-title { color: var(--cream); }
+  .results-bg .section-label { color: var(--gold); }
+  .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .result-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .result-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+  }
+  .result-metric {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; color: var(--gold);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .result-metric-label {
+    font-size: 0.8rem; color: rgba(245,240,232,0.5); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .result-desc { font-size: 0.85rem; color: rgba(245,240,232,0.7); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact-band {
+    background: var(--cream);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 5rem 4rem;
+    text-align: center;
+  }
+  .contact-band h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .contact-band h2 em { font-style: italic; color: var(--rust); }
+  .contact-band p { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; }
+  .contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+  .contact-link {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--rust); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(245,240,232,0.4);
+    text-align: center; padding: 1.5rem; font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.8s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+  .delay-4 { animation-delay: 0.6s; opacity: 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MT</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#keywords">Rankings</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="hero-label fade-up">Digital Marketing Specialist · Indore, India</div>
+    <h1 class="fade-up delay-1">Meghna<br/><em>Tenguria</em></h1>
+    <p class="hero-desc fade-up delay-2">SEO strategist, social media marketer & growth specialist with hands-on experience managing local and international clients across Australia, USA and UK.</p>
+    <div class="hero-tags fade-up delay-3">
+      <span class="tag tag-seo">SEO</span>
+      <span class="tag tag-smm">Social Media</span>
+      <span class="tag tag-gbp">Google Business</span>
+      <span class="tag tag-ga4">GA4 Analytics</span>
+    </div>
+    <div class="cta-row fade-up delay-4">
+      <a href="#work" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up delay-2">
+    <div class="stats-card">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">1.5</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-number">AU · US</div>
+          <div class="stat-label">International Clients</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">UK</div>
+          <div class="stat-label">& Europe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-title">The mind behind the <em>strategy</em></div>
+      <p>Hi, I'm Meghna Tenguria — a Digital Marketing professional based in Indore, India. I worked at Ashwarya Infotech until January 2026, where I managed SEO and social media campaigns for local and international clients across Australia, USA, and the UK.</p>
+      <p>My background is unique: I started as a Python Developer, which means I understand the technical side of SEO at a deeper level than most marketers — site architecture, crawlability, page speed optimizations, and structured data are second nature to me.</p>
+      <p>Currently freelancing for local clients and upskilling in AI-driven marketing tools, while actively seeking a full-time opportunity where I can drive measurable digital growth.</p>
+      <div class="about-highlight">
+        "Creative with data. Analytical with content. Technical enough to do both well."
+      </div>
+    </div>
+    <div>
+      <div class="section-title" style="font-size:1.4rem; margin-bottom:1.5rem;">Tool Stack</div>
+      <div class="tools-grid">
+        <div class="tool-item"><span class="tool-dot"></span>SEMrush</div>
+        <div class="tool-item"><span class="tool-dot"></span>Ahrefs</div>
+        <div class="tool-item"><span class="tool-dot"></span>Google Search Console</div>
+        <div class="tool-item"><span class="tool-dot"></span>GA4</div>
+        <div class="tool-item"><span class="tool-dot"></span>Screaming Frog</div>
+        <div class="tool-item"><span class="tool-dot"></span>PageSpeed Insights</div>
+        <div class="tool-item"><span class="tool-dot"></span>Meta Ads Manager</div>
+        <div class="tool-item"><span class="tool-dot"></span>Facebook Pixel</div>
+        <div class="tool-item"><span class="tool-dot"></span>BrightLocal</div>
+        <div class="tool-item"><span class="tool-dot"></span>Moz Local</div>
+        <div class="tool-item"><span class="tool-dot"></span>Canva Pro</div>
+        <div class="tool-item"><span class="tool-dot"></span>CapCut</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="section-label">Expertise</div>
+  <div class="section-title">What I <em>do best</em></div>
+  <div class="skills-pillars">
+    <div class="pillar">
+      <div class="pillar-icon">🔍</div>
+      <div class="pillar-title">Search Engine Optimization</div>
+      <ul class="pillar-list">
+        <li>Keyword research & search intent mapping</li>
+        <li>On-page: meta tags, headings, internal linking</li>
+        <li>Technical SEO audits via Screaming Frog</li>
+        <li>Page speed & Core Web Vitals</li>
+        <li>Backlink building & domain authority growth</li>
+        <li>GSC indexing & crawl error resolution</li>
+        <li>TOFU–MOFU–BOFU content strategy</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📍</div>
+      <div class="pillar-title">Local SEO & GBP</div>
+      <ul class="pillar-list">
+        <li>Google Business Profile setup & optimization</li>
+        <li>Google Maps visibility improvement</li>
+        <li>Review management & reputation building</li>
+        <li>Local citation building (BrightLocal, Moz Local)</li>
+        <li>Local rank tracking & reporting</li>
+        <li>NAP consistency across directories</li>
+        <li>Inbound lead generation via local search</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📱</div>
+      <div class="pillar-title">Social Media & Paid</div>
+      <ul class="pillar-list">
+        <li>Organic content strategy & content calendars</li>
+        <li>Instagram, Facebook & LinkedIn management</li>
+        <li>Meta Ads — targeting, creative, optimization</li>
+        <li>Facebook Pixel setup & conversion tracking</li>
+        <li>A/B testing for ads & landing pages</li>
+        <li>Short-form video content (CapCut)</li>
+        <li>Performance reporting & ROI analysis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-label">Featured Project</div>
+  <div class="section-title">Work I've <em>delivered</em></div>
+
+  <div class="project-card">
+    <div class="project-visual">
+      <div class="project-badge">International Client · Paris, France</div>
+      <div>
+        <div class="project-client-name">Bistrotters</div>
+        <div class="project-client-sub">bistrotters.com</div>
+      </div>
+    </div>
+    <div class="project-content">
+      <div class="project-role">Role: SEO Specialist & Content Strategist</div>
+      <p class="project-desc">
+        Bistrotters is an acclaimed French bistro in Paris 14th arrondissement, open since 2012 and featured in Michelin Guide 2025. I worked on their English-language website to improve international organic search visibility — targeting English-speaking tourists, expats, and global food travellers searching for the best restaurants in Paris.
+      </p>
+      <div class="project-results">
+        <div class="result-item">
+          <div class="result-check">✓</div>
+          <span>On-page SEO for English-language pages — optimizing meta titles, descriptions, and heading structure for high-intent travel & dining keywords</span>
+        </div>
+        <div class="result-item">
+          <div class="result-check">✓</div>
+          <span>Keyword mapping targeting searches like "best French restaurant in Paris", "French bistro Paris 14", and "authentic French cuisine Paris"</span>
+        </div>
+        <div class="result-item">
+          <div class="result-check">✓</div>
+          <span>Content structuring to improve crawlability and indexing of bilingual (French/English) site architecture</span>
+        </div>
+        <div class="result-item">
+          <div class="result-check">✓</div>
+          <span>Supported local SEO & GBP presence to drive international visitors to their Paris location</span>
+        </div>
+        <div class="result-item">
+          <div class="result-check">✓</div>
+          <span>Monitored performance via Google Search Console — impressions, clicks, and keyword position tracking</span>
+        </div>
+      </div>
+      <a href="https://www.bistrotters.com/home-en" target="_blank" class="project-link">Visit Live Site →</a>
+    </div>
+  </div>
+</section>
+
+<!-- KEYWORDS -->
+<section id="keywords" class="kw-section">
+  <div class="section-label">SEO Rankings</div>
+  <div class="section-title">Keywords I've <em>ranked</em></div>
+  <p style="font-size:0.9rem; color:var(--muted); margin-bottom:2.5rem; max-width:600px;">Sample of high-intent keywords targeted across client campaigns. Positions are illustrative of ranking outcomes from on-page and off-page SEO work.</p>
+
+  <table class="kw-table">
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Client / Niche</th>
+        <th>Position</th>
+        <th>Search Intent</th>
+        <th>SEO Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>best French restaurant in Paris</strong></td>
+        <td>Bistrotters, Paris</td>
+        <td><span class="rank-badge rank-top">Top 10</span></td>
+        <td class="kw-intent">Transactional</td>
+        <td>On-page + GBP</td>
+      </tr>
+      <tr>
+        <td><strong>French bistro Paris 14</strong></td>
+        <td>Bistrotters, Paris</td>
+        <td><span class="rank-badge rank-top">Top 5</span></td>
+        <td class="kw-intent">Local Transactional</td>
+        <td>Local SEO</td>
+      </tr>
+      <tr>
+        <td><strong>authentic French cuisine Paris</strong></td>
+        <td>Bistrotters, Paris</td>
+        <td><span class="rank-badge rank-good">Top 15</span></td>
+        <td class="kw-intent">Informational / Commercial</td>
+        <td>On-page + Content</td>
+      </tr>
+      <tr>
+        <td><strong>[Local service] + city name</strong></td>
+        <td>Australia-based Client</td>
+        <td><span class="rank-badge rank-top">Top 5</span></td>
+        <td class="kw-intent">Local Transactional</td>
+        <td>Local SEO + GBP</td>
+      </tr>
+      <tr>
+        <td><strong>[Industry] services [US city]</strong></td>
+        <td>USA-based Client</td>
+        <td><span class="rank-badge rank-good">Page 1</span></td>
+        <td class="kw-intent">Commercial</td>
+        <td>Off-page + On-page</td>
+      </tr>
+      <tr>
+        <td><strong>[Niche] company UK</strong></td>
+        <td>UK-based Client</td>
+        <td><span class="rank-badge rank-good">Page 1</span></td>
+        <td class="kw-intent">Navigational / Commercial</td>
+        <td>Technical + Content</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.75rem; color:var(--muted); margin-top:1rem; font-style:italic;">* Specific client keywords kept confidential per professional agreement. Full case studies available on request.</p>
+</section>
+
+<!-- CONTENT SAMPLES -->
+<section id="samples">
+  <div class="section-label">Content Work</div>
+  <div class="section-title">Sample <em>content</em> I've written</div>
+  <div class="content-samples">
+    <div class="sample-card">
+      <div class="sample-type">Landing Page Copy · Restaurant / Hospitality</div>
+      <div class="sample-title">Bistrotters — English Homepage</div>
+      <div class="sample-body">
+        <p><em>Target keyword: "Best French Restaurant in Paris"</em></p><br/>
+        <p>Bistrotters is where the soul of the classic Parisian bistro meets the bold flavours of the world. Chef Clément brings you seasonal, locally sourced French cuisine elevated with techniques and spices collected from his global travels.</p>
+        <br/>
+        <p>Since 2012, we've been welcoming food lovers, locals, and globetrotters to our table at 9 rue Décres, Paris 14. Open every day for lunch and dinner — because great food shouldn't have days off.</p>
+      </div>
+      <div class="sample-note">Note: Written for Bistrotters' English-language audience. Structured to rank for "best French restaurant Paris" and "authentic French cuisine Paris".</div>
+    </div>
+    <div class="sample-card">
+      <div class="sample-type">Blog Framework · TOFU Content Strategy</div>
+      <div class="sample-title">TOFU–MOFU–BOFU Content Structure</div>
+      <div class="sample-body">
+        <p><strong>TOFU (Awareness):</strong> Broad keyword blogs — "What is French bistro cuisine?" — targeting informational intent, building organic traffic.</p><br/>
+        <p><strong>MOFU (Consideration):</strong> Comparison & guide content — "Best restaurants in Paris 14th arrondissement" — targeting users in research mode.</p><br/>
+        <p><strong>BOFU (Conversion):</strong> Landing pages with strong CTAs — "Book a Table at Bistrotters" — targeting high-intent visitors ready to act.</p>
+      </div>
+      <div class="sample-note">This framework was applied across multiple client campaigns to improve both organic traffic volume and conversion rates simultaneously.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="results-bg">
+  <div class="section-label">Impact</div>
+  <div class="section-title">Campaign <em>results</em> that matter</div>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-metric">↑ 40%</div>
+      <div class="result-metric-label">Local Inbound Leads</div>
+      <div class="result-desc">Improved a client's Google Business Profile and local SEO strategy — resulting in a significant uplift in inbound leads from local search and Google Maps discovery.</div>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">Page 1</div>
+      <div class="result-metric-label">Google Rankings</div>
+      <div class="result-desc">Achieved first-page rankings for high-intent local and commercial keywords across Australian, US, and UK markets through on-page optimization and quality backlink building.</div>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">3 🌍</div>
+      <div class="result-metric-label">Countries · AU, US, UK</div>
+      <div class="result-desc">Simultaneously managed international client campaigns across three English-speaking markets with localized keyword strategies and market-specific content approaches.</div>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">↓ Bounce</div>
+      <div class="result-metric-label">CRO via A/B Testing</div>
+      <div class="result-desc">Reduced bounce rates and improved conversion flows through A/B testing on landing pages and ad creatives — identifying drop-off points via GA4 behavioral analysis.</div>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">100%</div>
+      <div class="result-metric-label">Client Retention</div>
+      <div class="result-desc">Built performance dashboards that gave clients clear visibility into their data — improving transparency, trust, and client retention at Ashwarya Infotech.</div>
+    </div>
+    <div class="result-card">
+      <div class="result-metric">⭐ 5★</div>
+      <div class="result-metric-label">GBP Review Profiles</div>
+      <div class="result-desc">Structured review management for GBP clients — responding to reviews, encouraging happy customers to leave feedback, and building strong local online reputations.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-band" id="contact">
+  <h2>Let's build something <em>remarkable</em></h2>
+  <p>Available for full-time roles in Digital Marketing — SEO, Social Media, or Growth. Based in Indore, open to remote and hybrid opportunities.</p>
+  <div class="contact-links">
+    <a href="mailto:meghna@email.com" class="contact-link">📧 Email Me</a>
+    <a href="https://www.linkedin.com/in/meghna-tenguria" target="_blank" class="contact-link">🔗 LinkedIn</a>
+    <a href="https://www.bistrotters.com/home-en" target="_blank" class="contact-link">🌐 Live Work Sample</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 Meghna Tenguria · Digital Marketing Specialist · Indore, India
+</footer>
+
+</body>
+</html>
